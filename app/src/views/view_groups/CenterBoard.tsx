@@ -1,15 +1,13 @@
 import { Card } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { RandomIcons } from "../views/view_elements/RandomIcons";
-import { GameSetting } from "../db/slot_machine_db";
+import { RandomIcons } from "../view_elements/RandomIcons";
+import { GameSetting } from "../../db/slot_machine_db";
 
-type CenterBoardLayout = {
+type CenterBoard = {
   gameSetting: GameSetting;
 };
 
-export const CenterBoardLayout: React.FC<CenterBoardLayout> = ({
-  gameSetting,
-}) => {
+export const CenterBoard: React.FC<CenterBoard> = ({ gameSetting }) => {
   return (
     <Grid className="flex">
       {gameSetting.cardsIndex.map((value: number, index: number) => (

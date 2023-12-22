@@ -1,11 +1,15 @@
 "use client";
 
-import { GameSetting } from "../db/slot_machine_db";
+import { CardCount, ChoicesCount, GameSetting } from "../db/slot_machine_db";
 import { useGameData } from "../hooks/useGameData";
 import { SlotMachine } from "../views/view_groups/SlotMachine";
 
 export type GameHandlers = {
   onClickPlay: () => void;
+  onSelectCardNumber: (value: CardCount) => void;
+  onSelectVariation: (value: ChoicesCount) => void;
+  setCardCount: (value: CardCount) => void;
+  setChoicesCount: (value: ChoicesCount) => void;
 };
 
 export type TutorialModalHandlers = {
@@ -24,7 +28,14 @@ export const SlotMachineController: React.FC = () => {
   const {
     apiRawData: { loading, error },
     localStates: { isTutorialOpen, gameSetting },
-    handlers: { handleClickPlay, handleCloseTutorialModal },
+    handlers: {
+      handleClickPlay,
+      handleCloseTutorialModal,
+      onSelectCardNumber,
+      onSelectVariation,
+      setCardCount,
+      setChoicesCount,
+    },
   } = useGameData();
 
   /**
@@ -41,6 +52,10 @@ export const SlotMachineController: React.FC = () => {
   // Handles for main game content interaction
   const gameHandlers = {
     onClickPlay: handleClickPlay,
+    onSelectCardNumber,
+    onSelectVariation,
+    setCardCount,
+    setChoicesCount,
   };
 
   // Handles for tutorial modal interaction
