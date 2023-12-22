@@ -28,7 +28,10 @@ export const SlotMachine: React.FC<SlotMachineController> = ({
           Tokens
         </span>
       </h1>
-      <CenterBoard gameSetting={gameSetting} />
+      <CenterBoard
+        gameSetting={gameSetting}
+        className="xl:flex-nowrap flex-wrap"
+      />
       <DiscreteSlider
         onSelectCardNumber={gameHandlers.onSelectCardNumber}
         onSelectVariation={gameHandlers.onSelectVariation}

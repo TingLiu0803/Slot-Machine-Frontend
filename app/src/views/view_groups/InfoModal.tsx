@@ -1,11 +1,13 @@
 import { Modal, Box, Typography } from "@mui/material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import { GameSetting } from "../../db/slot_machine_db";
 
 type InfoModal = {
   open: boolean;
   onClose: () => void;
-  gameSetting: GameSetting;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  className?: string;
 };
 
 const style = {
@@ -16,17 +18,21 @@ const style = {
   width: 400,
   bgcolor: "none",
   border: "none",
+  outline: "none",
 };
 
 export const InfoModal: React.FC<InfoModal> = ({
   open,
   onClose,
-  gameSetting,
+  title,
+  subtitle,
+  description,
+  className = "",
 }) => {
   return (
     <>
       <HelpOutlineIcon
-        className="text-gray-500 cursor-pointer"
+        className={`text-gray-500 cursor-pointer ${className}}`}
         fontSize="large"
         onClick={onClose}
       />
@@ -42,35 +48,21 @@ export const InfoModal: React.FC<InfoModal> = ({
             component="h2"
             className="font-bold text-lg md:text-3xl"
           >
-            How To Win Tokens
+            {title}
           </Typography>
           <Typography
             id="modal-modal-description"
             sx={{ mt: 2 }}
             className="text-sm md:text-base font-light"
           >
-            Click "Play" to start the game
+            {subtitle}
           </Typography>
           <Typography
             id="modal-modal-description"
             sx={{ mt: 2 }}
             className="text-sm md:text-base font-light"
           >
-            {`Deduct ${gameSetting.tokenCostPerPlay} tokens per spin`}
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 2 }}
-            className="text-sm md:text-base font-light"
-          >
-            {`Award ${gameSetting.minorReward} tokens if two third of symbols match`}
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 2 }}
-            className="text-sm md:text-base font-light"
-          >
-            {`Award ${gameSetting.majorReward} tokens if all symbols match`}
+            {description}
           </Typography>
         </Box>
       </Modal>

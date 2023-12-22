@@ -81,19 +81,6 @@ export const useSlotMachineLocalData = (data: GameSetting) => {
     handleTokenCalculation();
   }, [randomCardSetIndexes]);
 
-  // Handles card pool update to initial icons when change in cardCount, choicesCount, tokenCount
-  const handleUpdateCardsPool = useCallback(() => {
-    if (tokenCount >= 10) {
-      setIsBeforePlay(true);
-      const cardsIndex = new Array(gameSetting.cardCount).fill(0);
-      setRandomCardSetIndexes(cardsIndex);
-    }
-  }, [tokenCount, gameSetting.choicesCount, gameSetting.cardCount]);
-
-  useEffect(() => {
-    handleUpdateCardsPool();
-  }, [data.cardCount, data.choicesCount, data.tokenCount]);
-
   return {
     gameSetting,
     isTutorialOpen,

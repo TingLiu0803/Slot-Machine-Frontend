@@ -1,8 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies `npm install` or `yarn install`
+
+2. secondly, run the development server:
 
 ```bash
 npm run dev
@@ -20,17 +20,20 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Design Ideas
 
-To learn more about Next.js, take a look at the following resources:
+1. State Management Handled by Controllers
+   Our application leverages controllers for efficient state management. This approach allows for a more structured and maintainable codebase. Controllers act as intermediaries between the UI and the business logic, ensuring that state changes are predictable and easily traceable. This design choice not only simplifies debugging but also enhances the scalability of the application. By encapsulating state logic within controllers, we can easily modify or replace them without impacting other parts of the system.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. API Activities Handled by useGameData Despite No Real Database
+   In the absence of a real database, our application uses the useGameData custom hook to simulate API interactions. This innovative approach mimics the behavior of actual API calls, preparing the application for easy integration with a real backend in the future. It also helps in maintaining the separation of concerns, as all data-fetching logic is centralized within this hook. This design decision aids in keeping the UI components clean and focused solely on rendering.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Highly Modular and Reusable Components with Tailwind and Material UI
+   Our components are designed with modularity and reusability in mind, utilizing the flexibility of Tailwind CSS and Material UI. This combination allows us to create a unique and responsive design while maintaining a consistent look and feel throughout the application. The use of Tailwind CSS enhances the customization and scalability of our components, enabling rapid development and easy maintenance. Material UI components wrapped in Tailwind CSS offer a robust and flexible solution for building a dynamic and visually appealing user interface.
 
-## Deploy on Vercel
+4. Scalable App Features for Adjusting Card Sizes and Numbers
+   The application is engineered to dynamically scale the size and number of card choices, offering a versatile user experience. This feature allows users to customize their gameplay, catering to different preferences and screen sizes. The scalability of card sizes and quantities is a testament to the flexible and adaptive nature of our app design. This adaptability not only enhances user engagement but also demonstrates the application's capability to evolve with user needs and technological advancements.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Alt text for the image](/public/normal_view.png)
+![Alt text for the image](/public/more_than_three_cards.png)
+![Alt text for the image](/public/mobile.png)

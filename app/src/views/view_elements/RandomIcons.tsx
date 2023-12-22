@@ -19,31 +19,30 @@ enum IconKind {
   THUMBS_UP,
 }
 
-export const RandomIcons: React.FC<{ iconKind: number }> = ({ iconKind }) => {
+type RandomIcons = {
+  iconKind: number;
+  className?: string;
+};
+
+export const RandomIcons: React.FC<RandomIcons> = ({ iconKind, className }) => {
   switch (iconKind) {
     case IconKind.PET:
-      return <PetsIcon className="text-gray-300 sm:text-5xl md:text-6xl" />;
+      return <PetsIcon className={className} />;
     case IconKind.HAPPY_FACE:
-      return (
-        <EmojiEmotionsIcon className="text-gray-300 sm:text-5xl md:text-6xl" />
-      );
+      return <EmojiEmotionsIcon className={className} />;
     case IconKind.STAR:
-      return <StarIcon className="text-gray-300 sm:text-5xl md:text-6xl" />;
+      return <StarIcon className={className} />;
     case IconKind.SUN:
-      return <WbSunnyIcon className="text-gray-300 sm:text-5xl md:text-6xl" />;
+      return <WbSunnyIcon className={className} />;
     case IconKind.MOON:
-      return (
-        <Brightness2Icon className="text-gray-300 sm:text-5xl md:text-6xl" />
-      );
+      return <Brightness2Icon className={className} />;
     case IconKind.SNOWFLAKE:
-      return <AcUnitIcon className="text-gray-300 sm:text-5xl md:text-6xl" />;
+      return <AcUnitIcon className={className} />;
     case IconKind.CLOUD:
-      return <CloudIcon className="text-gray-300 sm:text-5xl md:text-6xl" />;
+      return <CloudIcon className={className} />;
     case IconKind.THUMBS_UP:
-      return <ThumbUpIcon className="text-gray-300 sm:text-5xl md:text-6xl" />;
+      return <ThumbUpIcon className={className} />;
     default:
-      return (
-        <QuestionMarkIcon className="text-gray-300 sm:text-5xl md:text-6xl" />
-      );
+      return <QuestionMarkIcon className={className} />;
   }
 };

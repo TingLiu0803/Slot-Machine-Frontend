@@ -56,11 +56,29 @@ export const useGameData = () => {
   const {
     gameSetting,
     isTutorialOpen,
+    tokenCount,
+    setIsBeforePlay,
+    setRandomCardSetIndexes,
     handleCloseTutorialModal,
     handleClickPlay,
     setCardCount,
     setChoicesCount,
   } = useSlotMachineLocalData(data);
+
+  // Handles card pool update to initial icons when change in cardCount, choicesCount, tokenCount
+  const handleMutateCardsPoolDB = useCallback(() => {
+    if (tokenCount >= 10) {
+      setIsBeforePlay(true);
+      const cardsIndex = new Array(gameSetting.cardCount).fill(0);
+      // mutate db like a POST request
+      slotMachineDB.gameSetting.data.cardsIndex = cardsIndex;
+      setRandomCardSetIndexes(cardsIndex);
+    }
+  }, [tokenCount, gameSetting.choicesCount, gameSetting.cardCount]);
+
+  useEffect(() => {
+    handleMutateCardsPoolDB();
+  }, [data.cardCount, data.choicesCount, data.tokenCount]);
 
   return {
     apiRawData: { data, error, loading },

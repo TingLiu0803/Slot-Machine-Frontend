@@ -11,6 +11,7 @@ type ButtonGroupLayout = {
   gameSetting: GameSetting;
   buttonOne?: React.ReactElement;
   buttonTwo?: React.ReactElement;
+  className?: string;
 };
 
 export const ButtonGroupLayout: React.FC<ButtonGroupLayout> = ({
@@ -18,15 +19,22 @@ export const ButtonGroupLayout: React.FC<ButtonGroupLayout> = ({
   gameSetting,
   buttonOne,
   buttonTwo,
+  className = "",
 }) => {
+  const description = `Deduct ${gameSetting.tokenCostPerPlay} tokens per spin.
+  Award ${gameSetting.minorReward} tokens if two third of symbols match;
+  Award ${gameSetting.majorReward} tokens if all symbols match.`;
+
   return (
-    <Stack direction="row" spacing={2} className="items-center">
+    <Stack direction="row" spacing={2} className={`items-center ${className}`}>
       {buttonOne}
       {buttonTwo}
       <InfoModal
         open={tutorialmodalHandlers.isTutorialOpen}
         onClose={() => tutorialmodalHandlers.handleCloseTutorialModal()}
-        gameSetting={gameSetting}
+        title="How To Win Tokens"
+        subtitle="Click 'Play!' to start the game"
+        description={description}
       />
     </Stack>
   );
